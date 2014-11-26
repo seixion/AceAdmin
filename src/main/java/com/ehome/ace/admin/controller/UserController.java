@@ -20,7 +20,7 @@ public class UserController {
     @RequestMapping("view")
     public String view(Model model) {
 
-        return "api";
+        return "form_inline";
     }
 
     @RequestMapping("list")
