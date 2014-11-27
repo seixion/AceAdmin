@@ -12,3 +12,8 @@
 </body>
 </html>
 <#include "common/script.ftl">
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+</script>
