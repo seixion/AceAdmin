@@ -4,6 +4,7 @@ import jodd.util.RandomStringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,18 +24,36 @@ public class UserController {
         return "form_inline";
     }
 
+    @RequestMapping("ajax")
+    public String ajax() {
+        return "datatables";
+    }
+
     @RequestMapping("list")
+    @ResponseBody
     public Object list() {
-        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-        for (int i =1; i<=66;i++) {
+        Map<String, Object> result = new HashMap<String, Object>();
+        List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
+        for (int i = 1; i <= 66; i++) {
             Map map = new HashMap();
             map.put("id", i);
             map.put("name", "测试用户：" + i);
             map.put("age", RandomStringUtil.randomNumeric(2));
             map.put("sex", "女");
-            result.add(map);
+            data.add(map);
         }
+        result.put("draw", 1);
+        result.put("recordsTotal", 66);
+        result.put("recordsFiltered", 66);
+        result.put("data", data);
 
         return result;
     }
+
+
+
+
+
+
+
 }
