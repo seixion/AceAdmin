@@ -6,19 +6,19 @@
 <#include "common/css.ftl">
 </head>
 <body class="no-skin">
-<div class="main-container"
-<div class="main-content">
-    <div class="page-content">
-        <div class="page-content-area">
-            <div class="row">
-                <div class="col-xs-12">
-                    <table id="example"></table>
-                    <div id="pager"></div>
+<div class="main-container">
+    <div class="main-content">
+        <div class="page-content">
+            <div class="page-content-area">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <table id="example"></table>
+                        <div id="pager"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
@@ -42,7 +42,6 @@
             pager: "#pager",
             sortname: "id",
             sortorder: "desc",
-            width: "100%",
             height: "100%",
             multiselect: true,
             multiboxonly: true,     // 只能选中一个
