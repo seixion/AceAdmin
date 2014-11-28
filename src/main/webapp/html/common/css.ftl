@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="../../assets/css/font-awesome.min.css"/>
 
 <!-- page specific plugin styles -->
+<link rel="stylesheet" href="../../assets/css/jquery-ui.min.css" />
 <link rel="stylesheet" href="../../assets/css/jquery-ui.custom.min.css" />
 <link rel="stylesheet" href="../../assets/css/chosen.css" />
 <link rel="stylesheet" href="../../assets/css/datepicker.css" />
@@ -11,6 +12,7 @@
 <link rel="stylesheet" href="../../assets/css/bootstrap-datetimepicker.css" />
 <link rel="stylesheet" href="../../assets/css/colorpicker.css" />
 <link rel="stylesheet" href="../../assets/css/select2.css" />
+<link rel="stylesheet" href="../../assets/css/ui.jqgrid.css" />
 
 <!-- text fonts -->
 <link rel="stylesheet" href="../../assets/css/ace-fonts.css"/>

@@ -29,6 +29,13 @@ public class UserController {
         return "datatables";
     }
 
+    @RequestMapping("jqgrid")
+    public String jqgrid() {
+        return "jq_grid";
+    }
+
+
+
     @RequestMapping("list")
     @ResponseBody
     public Object list() {
@@ -42,10 +49,21 @@ public class UserController {
             map.put("sex", "女");
             data.add(map);
         }
-        result.put("draw", 1);
-        result.put("recordsTotal", 66);
-        result.put("recordsFiltered", 66);
-        result.put("data", data);
+//        result.put("draw", 1);
+//        result.put("recordsTotal", 66);
+//        result.put("recordsFiltered", 66);
+//        result.put("data", data);
+        result.put("page", 1);
+        result.put("total", 7);
+        result.put("records", 66);
+        result.put("rows", data);
+
+        Map<String, Object> userdataMap = new HashMap<String, Object>();
+        userdataMap.put("amount", 3220);
+        userdataMap.put("tax", 342);
+        userdataMap.put("total", 3564);
+        userdataMap.put("name", "Totals:");
+        result.put("userdata", userdataMap);
 
         return result;
     }

@@ -9,7 +9,7 @@
 
 <!--[if IE]>
 <script type="text/javascript">
-window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<"+"/script>");
+window.jQuery || document.write("<script src='../../assets/js/jquery1x.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
 <script type="text/javascript">
@@ -43,13 +43,13 @@ window.jQuery || document.write("<script src='../assets/js/jquery1x.min.js'>"+"<
 <script src="../../assets/js/jquery.maskedinput.min.js"></script>
 <script src="../../assets/js/bootstrap-tag.min.js"></script>
 <script src="../../assets/js/typeahead.jquery.min.js"></script>
-<script src="../../assets/js/jquery.dataTables.min.js"></script>
-<script src="../../assets/js/jquery.dataTables.bootstrap.js"></script>
 <script src="../../assets/js/fuelux/fuelux.wizard.min.js"></script>
 <script src="../../assets/js/jquery.validate.min.js"></script>
 <script src="../../assets/js/additional-methods.min.js"></script>
 <script src="../../assets/js/bootbox.min.js"></script>
 <script src="../../assets/js/select2.min.js"></script>
+<script src="../../assets/js/jqGrid/jquery.jqGrid.min.js"></script>
+<script src="../../assets/js/jqGrid/i18n/grid.locale-cn.js"></script>
 
 <!-- ace scripts -->
 <script src="../../assets/js/ace-elements.min.js"></script>
