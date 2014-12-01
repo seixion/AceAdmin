@@ -24,28 +24,27 @@
 </html>
 <#include "common/script.ftl">
 <script type="text/javascript">
-    $(window).triggerHandler('resize.jqGrid');
     $(document).ready(function () {
         var jqGrid = $("#example");
         //resize to fit page size
         $(window).on('resize.jqGrid', function () {
-            $("#example").jqGrid('setGridWidth', $(".page-content").width());
+            jqGrid.jqGrid('setGridWidth', $(".page-content").width());
         });
 
         //resize on sidebar collapse/expand
-        var parent_column = $("#example").closest('[class*="col-"]');
-        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
-            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
-                //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
-                setTimeout(function () {
-                    $("#example").jqGrid('setGridWidth', parent_column.width());
-                }, 0);
-            }
-        });
+//        var parent_column = jqGrid.closest('[class*="col-"]');
+//        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+//            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+//                //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
+//                setTimeout(function () {
+//                    jqGrid.jqGrid('setGridWidth', parent_column.width());
+//                }, 0);
+//            }
+//        });
 
         jqGrid.jqGrid({
             caption: "jqGrid数据表格",
-            url: "/ace/admin/api/user/list.html",
+            url: "${path}/api/user/list.html",
             datatype: "json",
             colNames: ["标识", "姓名", "年龄", "性别"],
             colModel: [
@@ -73,7 +72,7 @@
 
         });
 
-        $(window).triggerHandler('resize.jqGrid');
+        $(window).triggerHandler('resize.jqGrid');      // 自适应屏幕宽度
 
         /** 左下角工具按钮 **/
         jqGrid.jqGrid('navGrid', "#pager",

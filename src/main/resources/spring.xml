@@ -37,6 +37,11 @@
                 <prop key="number_format">#.##</prop>
             </props>
         </property>
+        <property name="freemarkerVariables">
+            <map>
+                <entry key="path" value="/ace/admin"/>
+            </map>
+        </property>
     </bean>
     <!-- freeMarker视图解析 如返回userinfo。。在这里配置后缀名ftl和视图解析器。。 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
