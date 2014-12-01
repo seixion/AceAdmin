@@ -24,25 +24,43 @@
 </html>
 <#include "common/script.ftl">
 <script type="text/javascript">
+    $(window).triggerHandler('resize.jqGrid');
     $(document).ready(function () {
         var jqGrid = $("#example");
+        //resize to fit page size
+        $(window).on('resize.jqGrid', function () {
+            $("#example").jqGrid('setGridWidth', $(".page-content").width());
+        });
+
+        //resize on sidebar collapse/expand
+        var parent_column = $("#example").closest('[class*="col-"]');
+        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
+            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
+                //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
+                setTimeout(function () {
+                    $("#example").jqGrid('setGridWidth', parent_column.width());
+                }, 0);
+            }
+        });
+
         jqGrid.jqGrid({
             caption: "jqGrid数据表格",
             url: "/ace/admin/api/user/list.html",
             datatype: "json",
             colNames: ["标识", "姓名", "年龄", "性别"],
             colModel: [
-                {name: 'id', index: 'id', width: 55},
-                {name: 'name', index: 'name', width: 100},
+                {name: 'id', index: 'id', width: 150, fixed: true},
+                {name: 'name', index: 'name', width: 280},
                 {name: 'age', index: 'age', width: 55},
                 {name: 'sex', index: 'sex', width: 55}
             ],
             rowNum: 10,
             rowList: [10, 20, 30],
             pager: "#pager",
+            altRows: true,
             sortname: "id",
             sortorder: "desc",
-            height: "100%",
+            height: "330",
             multiselect: true,
             multiboxonly: true,     // 只能选中一个
             loadComplete : function() {
@@ -55,7 +73,9 @@
 
         });
 
+        $(window).triggerHandler('resize.jqGrid');
 
+        /** 左下角工具按钮 **/
         jqGrid.jqGrid('navGrid', "#pager",
                 { 	//navbar options
                     edit: true,
