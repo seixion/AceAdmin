@@ -31,33 +31,26 @@
             jqGrid.jqGrid('setGridWidth', $(".page-content").width());
         });
 
-        //resize on sidebar collapse/expand
-//        var parent_column = jqGrid.closest('[class*="col-"]');
-//        $(document).on('settings.ace.jqGrid', function (ev, event_name, collapsed) {
-//            if (event_name === 'sidebar_collapsed' || event_name === 'main_container_fixed') {
-//                //setTimeout is for webkit only to give time for DOM changes and then redraw!!!
-//                setTimeout(function () {
-//                    jqGrid.jqGrid('setGridWidth', parent_column.width());
-//                }, 0);
-//            }
-//        });
-
         jqGrid.jqGrid({
             caption: "jqGrid数据表格",
             url: "${path}/user/list.html",
             datatype: "json",
-            colNames: ["标识", "姓名", "年龄", "性别"],
+            colNames: ["标识", "姓名", "年龄", "出生日期", "性别", "是否激活"],
             colModel: [
                 {name: 'id', index: 'id', width: 150, fixed: true},
-                {name: 'name', index: 'name', width: 280},
-                {name: 'age', index: 'age', width: 55},
-                {name: 'sex', index: 'sex', width: 55}
+                {name: 'name', index: 'name', width: 280, editable: true},
+                {name: 'age', index: 'age', width: 55, editable: true},
+                {name: 'birthday', index: 'birthday', width: 55, editable: true, formatter: "date", formatoptions: {newformat: "yyyy-mm-dd"}},
+                {name: 'sex', index: 'sex', width: 55, editable: true, edittype: "select", formatter: "select", editoptions: {value:"1:男;0:女"}},
+                {name: 'enable', index: 'enable', width: 55, editable: true, edittype: "checkbox", formatter: "checkbox", editoptions: {value:"1:可用;0:不可用"}}
             ],
+            viewrecords : true,
             rowNum: 10,
             rowList: [10, 20, 30],
             pager: "#pager",
-            sortname: "id",
-            sortorder: "desc",
+            altRows: true,
+//            sortname: "id",
+//            sortorder: "desc",
             height: "300",
             multiselect: true,
             multiboxonly: true,     // 只能选中一个
@@ -65,9 +58,10 @@
                 var table = this;
                 setTimeout(function(){
                     updatePagerIcons(table);
-//                    enableTooltips(table);
+                    enableTooltips(table);
                 }, 0);
-            }
+            },
+            editurl: "修改时的url地址..."
 
         });
 
@@ -75,87 +69,86 @@
 
         /** 左下角工具按钮 **/
         jqGrid.jqGrid('navGrid', "#pager",
-                { 	//navbar options
+                { 	// 导航栏配置项
                     edit: true,
-                    editicon : 'ace-icon fa fa-pencil blue',
+                    editicon: 'ace-icon fa fa-pencil blue',
                     add: true,
-                    addicon : 'ace-icon fa fa-plus-circle purple',
+                    addicon: 'ace-icon fa fa-plus-circle purple',
                     del: true,
-                    delicon : 'ace-icon fa fa-trash-o red',
+                    delicon: 'ace-icon fa fa-trash-o red',
                     search: true,
-                    searchicon : 'ace-icon fa fa-search orange',
+                    searchicon: 'ace-icon fa fa-search orange',
                     refresh: true,
-                    refreshicon : 'ace-icon fa fa-refresh green',
+                    refreshicon: 'ace-icon fa fa-refresh green',
                     view: true,
-                    viewicon : 'ace-icon fa fa-search-plus grey'
+                    viewicon: 'ace-icon fa fa-search-plus grey'
                 },
                 {
-                    //new record form
-                    //width: 700,
-                    closeAfterAdd: true,
-                    recreateForm: true,
-                    viewPagerButtons: false,
-                    beforeShowForm : function(e) {
-                        var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar')
-                                .wrapInner('<div class="widget-header" />');
-                        style_edit_form(form);
-                    }
-                },
-                {
-                    //edit record form
-                    closeAfterEdit: true,
+                    // 编辑
+                    //closeAfterEdit: true,
                     width: 700,
                     recreateForm: true,
-                    beforeShowForm : function(e) {
+                    beforeShowForm: function (e) {
                         var form = $(e[0]);
                         form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />');
                         style_edit_form(form);
                     }
                 },
                 {
-                    //delete record form
+                    // 新增
+                    width: 700,
+                    closeAfterAdd: true,
                     recreateForm: true,
-                    beforeShowForm : function(e) {
+                    viewPagerButtons: false,
+                    beforeShowForm: function (e) {
                         var form = $(e[0]);
-                        if(form.data('styled')) return false;
+                        form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />');
+                        style_edit_form(form);
+                    }
+                },
+                {
+                    // 删除
+                    recreateForm: true,
+                    beforeShowForm: function (e) {
+                        var form = $(e[0]);
+                        if (form.data('styled')) return false;
 
                         form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />');
                         style_delete_form(form);
 
                         form.data('styled', true);
                     },
-                    onClick : function(e) {
+                    onClick: function (e) {
                         alert(1);
                     }
                 },
                 {
-                    //search form
+                    // 搜索
                     recreateForm: true,
-                    afterShowSearch: function(e){
+                    afterShowSearch: function (e) {
                         var form = $(e[0]);
                         form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />');
                         style_search_form(form);
                     },
-                    afterRedraw: function(){
+                    afterRedraw: function () {
                         style_search_filters($(this));
-                    }
-                    ,
-                    multipleSearch: true,
-                    /**
-                     multipleGroup:true,
-                     showQuery: true
-                     */
+                    },
+                    multipleSearch: true
                 },
                 {
-                    //view record form
+                    // 查看
                     recreateForm: true,
-                    beforeShowForm: function(e){
+                    beforeShowForm: function (e) {
                         var form = $(e[0]);
-                        form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
+                        form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />');
                     }
                 }
         );
+
+        $(document).on('ajaxloadstart', function (e) {
+            jqGrid.jqGrid('GridUnload');
+            $('.ui-jqdialog').remove();
+        });
 
     });
 
@@ -219,5 +212,20 @@
     function enableTooltips(table) {
         $('.navtable .ui-pg-button').tooltip({container: 'body'});
         $(table).find('.ui-pg-div').tooltip({container: 'body'});
+    }
+
+    function sexFormat(cellvalue, options, cell) {
+        setTimeout(function () {
+            $(cell).find('input[type=checkbox]')
+                    .addClass('ace ace-switch ace-switch-5')
+                    .after('<span class="lbl"></span>');
+        }, 0);
+    }
+
+    function pickDate(cellvalue, options, cell) {
+        setTimeout(function () {
+            $(cell).find('input[type=text]')
+                    .datepicker({format: 'yyyy-mm-dd', autoclose: true});
+        }, 0);
     }
 </script>

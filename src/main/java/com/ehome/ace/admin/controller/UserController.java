@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,7 +47,9 @@ public class UserController {
             map.put("id", i);
             map.put("name", "测试用户：" + i);
             map.put("age", RandomStringUtil.randomNumeric(2));
-            map.put("sex", "女");
+            map.put("birthday", new Date());
+            map.put("enable", "1");
+            map.put("sex", "1");
             data.add(map);
         }
         result.put("page", 1);
