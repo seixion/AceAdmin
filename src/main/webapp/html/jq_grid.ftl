@@ -56,10 +56,9 @@
             rowNum: 10,
             rowList: [10, 20, 30],
             pager: "#pager",
-            altRows: true,
             sortname: "id",
             sortorder: "desc",
-            height: "330",
+            height: "300",
             multiselect: true,
             multiboxonly: true,     // 只能选中一个
             loadComplete : function() {
