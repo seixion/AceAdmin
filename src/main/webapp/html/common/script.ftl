@@ -54,3 +54,5 @@ window.jQuery || document.write("<script src='../../assets/js/jquery1x.min.js'>"
 <!-- ace scripts -->
 <script src="../../assets/js/ace-elements.min.js"></script>
 <script src="../../assets/js/ace.min.js"></script>
+
+<script src="../../assets/util/data-util.min.js"></script>

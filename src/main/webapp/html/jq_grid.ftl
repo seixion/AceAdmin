@@ -40,9 +40,9 @@
                 {name: 'id', index: 'id', width: 150, fixed: true},
                 {name: 'name', index: 'name', width: 280, editable: true},
                 {name: 'age', index: 'age', width: 55, editable: true},
-                {name: 'birthday', index: 'birthday', width: 55, editable: true, formatter: "date", formatoptions: {newformat: "yyyy-mm-dd"}},
-                {name: 'sex', index: 'sex', width: 55, editable: true, edittype: "select", formatter: "select", editoptions: {value:"1:男;0:女"}},
-                {name: 'enable', index: 'enable', width: 55, editable: true, edittype: "checkbox", formatter: "checkbox", editoptions: {value:"1:可用;0:不可用"}}
+                {name: 'birthday', index: 'birthday', width: 80, editable: true, formatter: dateFormat},
+                {name: 'sex', index: 'sex', width: 55, align: "center", editable: true, edittype: "select", editoptions: {value: "1:男;0:女"}, formatter: sexFormat},
+                {name: 'enable', index: 'enable', width: 55, editable: true, edittype: "checkbox", editoptions: {value:"1:可用;0:不可用"}}
             ],
             viewrecords : true,
             rowNum: 10,
@@ -214,12 +214,18 @@
         $(table).find('.ui-pg-div').tooltip({container: 'body'});
     }
 
-    function sexFormat(cellvalue, options, cell) {
-        setTimeout(function () {
-            $(cell).find('input[type=checkbox]')
-                    .addClass('ace ace-switch ace-switch-5')
-                    .after('<span class="lbl"></span>');
-        }, 0);
+    function sexFormat(cellvalue, options, rowObject) {
+        if (cellvalue == 1) {
+            return "<span class='ace-icon fa fa-male blue bigger-125'></span>";
+        } else if (cellvalue == 0) {
+            return "<span class='ace-icon fa fa-female pink2 bigger-125'></span>";
+        } else {
+            return "";
+        }
+    }
+
+    function dateFormat(cellvalue, options, rowObject) {
+        return lv.date(cellvalue).get("Y-m-d H:i:s");
     }
 
     function pickDate(cellvalue, options, cell) {
