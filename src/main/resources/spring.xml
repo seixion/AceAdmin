@@ -39,7 +39,7 @@
         </property>
         <property name="freemarkerVariables">
             <map>
-                <entry key="path" value="/ace/admin/api"/>
+                <entry key="path" value="/admin"/>
             </map>
         </property>
     </bean>
