@@ -6,6 +6,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
     <!-- 告诉spring注解bean的目录 -->
     <context:component-scan base-package="com.ehome.ace.admin"/>
+
     <!-- spring mvc 注解驱动 -->
     <mvc:annotation-driven>
         <!-- spring解析返回结果成json -->
@@ -22,6 +23,8 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
+    <!-- 告诉spring 静态资源的处理方式 -->
+    <mvc:default-servlet-handler/>
 
     <!-- freemarker的配置 -->
     <bean id="freemarkerConfigurer"
