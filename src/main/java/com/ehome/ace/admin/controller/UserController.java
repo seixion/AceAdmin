@@ -1,5 +1,6 @@
 package com.ehome.ace.admin.controller;
 
+import com.ehome.ace.admin.common.Constants;
 import jodd.util.RandomStringUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +17,7 @@ import java.util.Map;
  * Created by haoxiaolei on 2014/11/25 0025.
  */
 @Controller
-@RequestMapping("/user")
+@RequestMapping(Constants.ADMIN + "/user")
 public class UserController {
 
     @RequestMapping("view")
@@ -27,7 +28,7 @@ public class UserController {
 
     @RequestMapping("ajax")
     public String ajax() {
-        return "datatables";
+        return "user/user_list";
     }
 
     @RequestMapping("jqgrid")

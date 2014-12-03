@@ -34,7 +34,7 @@
             <ul class="nav ace-nav">
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../assets/avatars/user.jpg"/>
+                        <img class="nav-user-photo" src="/assets/avatars/user.jpg"/>
 								<span class="user-info">
 									<small>欢迎,</small>
 									管理员

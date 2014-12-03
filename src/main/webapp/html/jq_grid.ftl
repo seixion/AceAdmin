@@ -33,7 +33,7 @@
 
         jqGrid.jqGrid({
             caption: "jqGrid数据表格",
-            url: "${path}/user/list.html",
+            url: "${path}/admin/user/list.html",
             datatype: "json",
             colNames: ["标识", "姓名", "年龄", "出生日期", "性别", "是否激活"],
             colModel: [
