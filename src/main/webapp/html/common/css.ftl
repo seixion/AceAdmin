@@ -1,5 +1,5 @@
 <!-- bootstrap & fontawesome -->
-<link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="${path}/assets/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/assets/css/font-awesome.min.css"/>
 
 <!-- page specific plugin styles -->
