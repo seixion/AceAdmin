@@ -25,5 +25,13 @@
 </html>
 <#include "common/script.ftl">
 <script type="text/javascript">
+    $(document).ready(function () {
+        resizeWindow();
+        $(window).off("resize").on("resize", resizeWindow()).trigger("resize");
+    });
 
+    function resizeWindow() {
+        var height = $(window).height() - 150;
+        $(".tab-content>div").css({height: height}).ace_scroll({size: height});
+    }
 </script>

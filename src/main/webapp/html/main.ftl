@@ -1,5 +1,4 @@
-<!-- /section:basics/content.breadcrumbs -->
-<div class="page-content">
+<div class="main-content">
     <!-- #section:settings.box -->
     <div class="ace-settings-container" id="ace-settings-container">
         <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
@@ -73,21 +72,34 @@
 
     <!-- /section:settings.box -->
     <div class="page-content-area">
-        <div class="page-header">
-            <h1>
-                Dashboard
-                <small>
-                    <i class="ace-icon fa fa-angle-double-right"></i>
-                    overview &amp; stats
-                </small>
-            </h1>
-        </div>
-        <!-- /.page-header -->
-
-        <div class="row">
-            <div class="col-xs-12">
+        <div class="col-xs-12" style="padding-left: 6px;padding-top: 4px;">
+            <div class="col-xs-12" style="padding: 0">
                 <!-- PAGE CONTENT BEGINS -->
-                这里是主页面展示区
+                <div class="tabbable">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="active">
+                            <a data-toggle="tab" href="#home">
+                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                主页
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#home2">
+                                <i class="green ace-icon fa fa-home bigger-120"></i>
+                                主页2
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div id="home" class="tab-pane fade in active">
+                            <p>主页内容</p>
+                        </div>
+                        <div id="home2" class="tab-pane fade in">
+                            <p>home2</p>
+                        </div>
+                    </div>
+                </div>
                 <!-- PAGE CONTENT ENDS -->
             </div>
             <!-- /.col -->
