@@ -3,7 +3,7 @@
 <head>
     <title>数据表格</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<#include "common/css.ftl">
+<#include "../common/css.ftl">
 </head>
 <body>
 <table id="example" class="display" cellspacing="0" width="100%">
@@ -18,7 +18,7 @@
 </table>
 </body>
 </html>
-<#include "common/script.ftl">
+<#include "../common/script.ftl">
 <script type="text/javascript">
     $('#example').dataTable({
         "processing": true,

@@ -3,7 +3,7 @@
 <head>
     <title>数据表格(jqGrid)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<#include "common/css.ftl">
+<#include "../common/css.ftl">
 </head>
 <body class="no-skin">
 <div class="main-container">
@@ -22,7 +22,7 @@
 </div>
 </body>
 </html>
-<#include "common/script.ftl">
+<#include "../common/script.ftl">
 <script type="text/javascript">
     $(document).ready(function () {
         var jqGrid = $("#example");
