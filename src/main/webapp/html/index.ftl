@@ -26,6 +26,7 @@
 <#include "common/script.ftl">
 <script type="text/javascript">
     $(document).ready(function () {
+//        addTab("jqgrid_test_page", "jqgrid测试页面", "admin/user/jqgrid.html");
         resizeWindow();
         $(window).off("resize").on("resize", resizeWindow()).trigger("resize");
     });

@@ -33,7 +33,7 @@ public class UserController {
 
     @RequestMapping("jqgrid")
     public String jqgrid() {
-        return "jq_grid";
+        return "ehome/jq_grid";
     }
 
 

@@ -1,3 +1,6 @@
+<style type="text/css">
+    iframe{padding:0;border: none;width: 100%;height: 100%;}
+</style>
 <div class="main-content">
     <!-- #section:settings.box -->
     <div class="ace-settings-container" id="ace-settings-container">
@@ -76,27 +79,18 @@
             <div class="col-xs-12" style="padding: 0">
                 <!-- PAGE CONTENT BEGINS -->
                 <div class="tabbable">
-                    <ul class="nav nav-tabs" id="myTab">
+                    <ul class="nav nav-tabs" id="navTab">
                         <li class="active">
                             <a data-toggle="tab" href="#home">
                                 <i class="green ace-icon fa fa-home bigger-120"></i>
                                 主页
                             </a>
                         </li>
-                        <li>
-                            <a data-toggle="tab" href="#home2">
-                                <i class="green ace-icon fa fa-home bigger-120"></i>
-                                主页2
-                            </a>
-                        </li>
                     </ul>
 
-                    <div class="tab-content">
-                        <div id="home" class="tab-pane fade in active">
+                    <div class="tab-content" id="tabContent">
+                        <div id="home" class="tab-pane active">
                             <p>主页内容</p>
-                        </div>
-                        <div id="home2" class="tab-pane fade in">
-                            <p>home2</p>
                         </div>
                     </div>
                 </div>
@@ -108,3 +102,29 @@
     </div>
     <!-- /.page-content-area -->
 </div><!-- /.page-content -->
+<script type="text/javascript">
+    /**
+     * 添加一个tab页签
+     * @param tabId tab页签的id
+     * @param title 标题
+     * @param src   链接的页面地址
+     */
+    function addTab(tabId, title, src) {
+        var navTab = $("#navTab");
+        var tabContent = $("#tabContent");
+
+        var navTabHtml = $("<li class='active'>" +
+                              "<a data-toggle='tab' href='#navTab_" + tabId + "'>" +
+                                 "<i class='green ace-icon fa fa-home bigger-120'></i>" + title +
+                              "</a>" +
+                           "</li>");
+        var tabContentHtml = $("<div id='navTab_" + tabId + "' class='tab-pane active'>" +
+                                  "<iframe src='${path}/" + src + "'></iframe>" +
+                               "</div>");
+        navTab.append(navTabHtml);
+        navTabHtml.siblings().removeClass("active");
+        tabContent.append(tabContentHtml);
+        tabContentHtml.siblings().removeClass("active");
+        tabContentHtml.find("iframe").css({height: $(window).height()-155});
+    }
+</script>

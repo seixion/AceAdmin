@@ -8,7 +8,7 @@
 <body class="no-skin">
 <div class="main-container">
     <div class="main-content">
-        <div class="page-content">
+        <div class="page-content" style="padding-top: 0;padding-left: 0">
             <div class="page-content-area">
                 <div class="row">
                     <div class="col-xs-12">
