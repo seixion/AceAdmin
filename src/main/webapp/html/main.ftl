@@ -119,12 +119,14 @@
                               "</a>" +
                            "</li>");
         var tabContentHtml = $("<div id='navTab_" + tabId + "' class='tab-pane active'>" +
-                                  "<iframe src='${path}/" + src + "'></iframe>" +
+                                  <#--"<iframe src='${path}/" + src + "'></iframe>" +-->
                                "</div>");
         navTab.append(navTabHtml);
         navTabHtml.siblings().removeClass("active");
         tabContent.append(tabContentHtml);
         tabContentHtml.siblings().removeClass("active");
         tabContentHtml.find("iframe").css({height: $(window).height()-155});
+
+        $("#navTab_" + tabId).load("${path}/admin/user/jqgrid.html");
     }
 </script>
