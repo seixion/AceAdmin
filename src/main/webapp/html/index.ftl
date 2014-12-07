@@ -32,7 +32,7 @@
     });
 
     function resizeWindow() {
-        var height = $(window).height() - 150;
+        var height = $(window).height() - 140;
         $(".tab-content>div").css({height: height}).ace_scroll({size: height});
     }
 </script>
