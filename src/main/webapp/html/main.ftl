@@ -102,31 +102,3 @@
     </div>
     <!-- /.page-content-area -->
 </div><!-- /.page-content -->
-<script type="text/javascript">
-    /**
-     * 添加一个tab页签
-     * @param tabId tab页签的id
-     * @param title 标题
-     * @param src   链接的页面地址
-     */
-    function addTab(tabId, title, src) {
-        var navTab = $("#navTab");
-        var tabContent = $("#tabContent");
-
-        var navTabHtml = $("<li class='active'>" +
-                              "<a data-toggle='tab' href='#navTab_" + tabId + "'>" +
-                                 "<i class='green ace-icon fa fa-home bigger-120'></i>" + title +
-                              "</a>" +
-                           "</li>");
-        var tabContentHtml = $("<div id='navTab_" + tabId + "' class='tab-pane active'>" +
-                                  <#--"<iframe src='${path}/" + src + "'></iframe>" +-->
-                               "</div>");
-        navTab.append(navTabHtml);
-        navTabHtml.siblings().removeClass("active");
-        tabContent.append(tabContentHtml);
-        tabContentHtml.siblings().removeClass("active");
-        tabContentHtml.find("iframe").css({height: $(window).height()-155});
-
-        $("#navTab_" + tabId).load("${path}/admin/user/jqgrid.html");
-    }
-</script>

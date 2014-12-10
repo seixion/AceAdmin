@@ -12,7 +12,7 @@
             <div class="page-content-area">
                 <div class="row">
                     <div class="col-xs-12">
-                        <table id="example"></table>
+                        <table id="example" class="table table-striped table-bordered table-hover"></table>
                         <div id="pager"></div>
                     </div>
                 </div>
