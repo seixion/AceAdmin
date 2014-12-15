@@ -18,8 +18,7 @@
     <div class="main-content">
         <#include "main.ftl">
     </div>
-
-    <#include "footer.ftl">
+    <#--<#include "footer.ftl">-->
 </div>
 </body>
 </html>
@@ -27,8 +26,7 @@
 <script type="text/javascript">
     $(document).ready(function () {
         addTab("jqgrid_test_page", "jqgrid测试页面", "admin/user/jqgrid.html");
-        resizeWindow();
-        $(window).off("resize").on("resize", resizeWindow()).trigger("resize");
+        pageSetting();
     });
 
     /**
@@ -41,23 +39,31 @@
         var navTab = $("#navTab");
         var tabContent = $("#tabContent");
 
-        var navTabHtml = $("<li class='active'>" +
-        "<a data-toggle='tab' href='#navTab_" + tabId + "'>" +
-        "<i class='green ace-icon fa fa-home bigger-120'></i>" + title +
-        "</a>" +
-        "</li>");
-        var tabContentHtml = $("<div id='navTab_" + tabId + "' class='tab-pane active'>" +
-        "<iframe src='${path}/" + src + "'></iframe>" +
-        "</div>");
+        var navTabHtml =
+                $("<li class='active'>" +
+                "<a data-toggle='tab' href='#navTab_" + tabId + "'>" +
+                "<span class='green ace-icon fa fa-home bigger-120'></span>" + title +
+                "</a>" +
+                "</li>");
+        var tabContentHtml =
+                $("<div id='navTab_" + tabId + "' class='tab-pane active'>" +
+                "<iframe src='${path}/" + src + "' width='100%' height='100%'></iframe>" +
+                "</div>");
         navTab.append(navTabHtml);
         navTabHtml.siblings().removeClass("active");
         tabContent.append(tabContentHtml);
         tabContentHtml.siblings().removeClass("active");
-        tabContentHtml.find("iframe").css({height: $(window).height()-155});
     }
 
-    function resizeWindow() {
-        var height = $(window).height() - 143;
+    // 页面设置
+    function pageSetting() {
+        // resizeWindow
+        var height = $(window).height();
         $(".tab-content>div").css({height: height}).ace_scroll({size: height});
+
+        // 设置iframe页面适应主内容区
+        var scrollContent = $(".scroll-content");
+        scrollContent.parent().height($(window).height() - 105);
+        scrollContent.height("100%");
     }
 </script>

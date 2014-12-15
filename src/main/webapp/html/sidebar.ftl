@@ -237,7 +237,7 @@
                 </li>
 
                 <li class="">
-                    <a href="jqgrid.html">
+                    <a href="${path}/admin/user/jqgrid">
                         <i class="menu-icon fa fa-caret-right"></i>
                         jqGrid plugin
                     </a>

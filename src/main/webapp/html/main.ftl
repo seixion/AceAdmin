@@ -88,7 +88,7 @@
                         </li>
                     </ul>
 
-                    <div class="tab-content" id="tabContent">
+                    <div class="tab-content" id="tabContent" style="padding:10px 0;border-top: none;overflow: hidden">
                         <div id="home" class="tab-pane active">
                             <p>主页内容</p>
                         </div>

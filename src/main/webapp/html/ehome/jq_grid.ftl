@@ -45,13 +45,13 @@
                 {name: 'enable', index: 'enable', width: 55, editable: true, edittype: "checkbox", editoptions: {value:"1:可用;0:不可用"}}
             ],
             viewrecords : true,
-            rowNum: 10,
-            rowList: [10, 20, 30],
+            rowNum: 15,
+            rowList: [15, 20, 30],
             pager: "#pager",
             altRows: true,
 //            sortname: "id",
 //            sortorder: "desc",
-            height: "300",
+            height: "460",
             multiselect: true,
             multiboxonly: true,     // 只能选中一个
             loadComplete : function() {
